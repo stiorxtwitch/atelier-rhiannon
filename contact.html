@@ -1,157 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Contact – Atelier Rhiannon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-/* ================= BASE ================= */
-
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg, #f6f8f5, #edf4ef);
-    color: #2e443a;
-    overflow-x: hidden;
-}
-
-/* ================= HEADER ================= */
-
-header {
-    padding: 40px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2em;
-}
-
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #2e443a;
-}
-
-/* ================= FEUILLES ================= */
-
-.feuille {
-    position: absolute;
-    width: 200px;
-    opacity: 0.12;
-    animation: flotter 14s ease-in-out infinite;
-    pointer-events: none;
-}
-
-.feuille.gauche {
-    top: 180px;
-    left: -80px;
-}
-
-.feuille.droite {
-    bottom: 120px;
-    right: -80px;
-    animation-delay: 4s;
-}
-
-@keyframes flotter {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(25px); }
-    100% { transform: translateY(0); }
-}
-
-/* ================= CONTENU ================= */
-
-section {
-    max-width: 600px;
-    margin: auto;
-    padding: 120px 30px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.carte-contact {
-    background: white;
-    padding: 70px 50px;
-    border-radius: 45px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.06);
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1.4s ease;
-}
-
-.carte-contact.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.carte-contact h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    margin-bottom: 30px;
-}
-
-.carte-contact p {
-    font-size: 1.1em;
-    line-height: 1.8;
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 700px) {
-
-    .carte-contact {
-        padding: 50px 30px;
-        border-radius: 30px;
-    }
-
-    .feuille {
-        width: 120px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Rhiannon - Contact</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-    <h1>Atelier Rhiannon</h1>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Atelier Rhiannon"></a>
+    </div>
     <nav>
-        <a href="index.html">Accueil</a>
-        <a href="galerie.html">Œuvres</a>
-        <a href="a-propos.html">À propos</a>
-        <a href="contact.html">Contact</a>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
     </nav>
 </header>
 
-<!-- FEUILLES DECORATIVES -->
-<img class="feuille gauche" src="https://i.imgur.com/8QfZQyU.png" alt="">
-<img class="feuille droite" src="https://i.imgur.com/8QfZQyU.png" alt="">
-
 <section>
-    <div class="carte-contact" id="contactCard">
-        <h2>Contact</h2>
-        <p>
-            Pour toute question, collaboration ou échange sensible,
-            n’hésitez pas à me contacter.
-            <br><br>
-            <strong>atelier.rhiannon@email.com</strong>
-        </p>
-    </div>
+    <h2>Contactez-moi</h2>
+    <p style="text-align:center; max-width:600px; margin:0 auto 40px;">
+        Pour toute demande d'information, commande personnalisée ou collaboration.<br><br>
+        Email : ton@email.com<br>
+        Instagram : @toninstagram<br>
+        (Ajoute tes réseaux ou un formulaire si tu veux)
+    </p>
 </section>
 
-<script>
-/* Apparition douce */
-window.addEventListener("load", () => {
-    document.getElementById("contactCard").classList.add("visible");
-});
-</script>
+<footer>
+    © 2025 Atelier Rhiannon - Tous droits réservés
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
