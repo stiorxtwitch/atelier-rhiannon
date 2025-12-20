@@ -1,8 +1,8 @@
 // Animation au scroll
-document.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {
     document.querySelectorAll('section').forEach(sec => {
         const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
+        if (rect.top < window.innerHeight * 0.75) {
             sec.classList.add('visible');
         }
     });
@@ -12,13 +12,23 @@ document.addEventListener('scroll', () => {
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
+if (lightbox && lightboxImg) {
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        });
     });
-});
 
-lightbox.addEventListener('click', () => {
-    lightbox.classList.remove('active');
+    lightbox.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+    });
+}
+
+// Marquer le lien actif dans le menu
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('nav a').forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+    }
 });
