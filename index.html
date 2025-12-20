@@ -1,116 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Atelier Rhiannon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg, #f6f8f5, #edf4ef);
-    color: #2e443a;
-    overflow-x: hidden;
-}
-
-header {
-    padding: 40px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4em;
-}
-
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #2e443a;
-}
-
-.hero {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-}
-
-.hero h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3em;
-    max-width: 800px;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1.5s ease;
-}
-
-.hero p {
-    max-width: 600px;
-    margin: 30px auto;
-    font-size: 1.1em;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1.8s ease;
-}
-
-/* Animations des feuilles */
-@keyframes flotter {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(25px); }
-    100% { transform: translateY(0); }
-}
-
-@media (max-width: 700px) {
-    .hero h2 { font-size: 2em; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ton Nom - Titre de la page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-    <h1>Atelier Rhiannon</h1>
+    <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Logo +R"></a>
+    </div>
     <nav>
-        <a href="index.html">Accueil</a>
-        <a href="galerie.html">Œuvres</a>
-        <a href="a-propos.html">À propos</a>
-        <a href="contact.html">Contact</a>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
     </nav>
 </header>
 
-<!-- FEUILLES DECORATIVES -->
-<img src="https://i.imgur.com/x7TJTRN.png" 
-     alt="Feuille coin supérieur gauche" 
-     style="position:absolute;top:0;left:0;width:220px;opacity:0.12;animation:flotter 16s ease-in-out infinite;pointer-events:none;">
+<!-- Contenu spécifique ici -->
 
-<img src="https://i.imgur.com/x7TJTRN.png" 
-     alt="Feuille coin inférieur droit" 
-     style="position:absolute;width:220px;opacity:0.12;bottom:0;right:0;transform:scale(-1,-1);animation:flotter 16s ease-in-out infinite;pointer-events:none;">
+<footer>
+    © 2025 Ton Nom - Tous droits réservés
+</footer>
 
-<section class="hero">
-    <div>
-        <h2 id="titre">Un espace de création<br>lent et sensible</h2>
-        <p id="texte">
-            Peinture, fusain, encre de Chine, illustration et photographie.
-            Une exploration poétique de la matière et du silence.
-        </p>
-    </div>
-</section>
-
-<script>
-window.addEventListener("load", () => {
-    document.getElementById("titre").classList.add("visible");
-    document.getElementById("texte").classList.add("visible");
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
+<!-- ... head et header comme ci-dessus ... -->
+
+<div class="hero">
+    <h1>Bienvenue dans mon univers artistique</h1>
+    <p>Je suis [Ton Nom], artiste passionnée par [ton style]. Découvrez mes œuvres.</p>
+    <a href="galerie.html"><button>Voir la galerie</button></a>
+</div>
+
+<section>
+    <h2>Dernières œuvres</h2>
+    <!-- Tu peux mettre 3-4 images en mini galerie ici si tu veux -->
+</section>
