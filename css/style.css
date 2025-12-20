@@ -1,60 +1,151 @@
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f5f7f4;
-    color: #2f3e34;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+    --vert: #8fae9e;
+    --vert-fonce: #2e443a;
+    --fond: #f6f8f5;
+    --accent: #bfa980;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--fond);
+    color: var(--vert-fonce);
+    line-height: 1.7;
+}
+
+/* ---------- HEADER ---------- */
+
 header {
-    background-color: #e3efe8;
-    padding: 20px;
-    text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: rgba(246,248,245,0.95);
+    backdrop-filter: blur(6px);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
 
 header h1 {
     font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
     margin: 0;
 }
 
 nav a {
-    margin: 0 15px;
+    margin-left: 30px;
     text-decoration: none;
-    color: #2f3e34;
-    font-weight: 500;
+    color: var(--vert-fonce);
+    font-weight: 400;
+    position: relative;
 }
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ---------- HERO ---------- */
 
 .hero {
-    background: linear-gradient(to right, #cfe3d6, #e8f1ec);
-    padding: 80px 20px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-}
-
-.galerie {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
     padding: 40px;
+    background: linear-gradient(
+        rgba(246,248,245,0.9),
+        rgba(246,248,245,0.9)
+    ),
+    url("../images/hero.jpg") center / cover no-repeat;
 }
 
-.galerie img {
-    width: 100%;
-    border-radius: 12px;
-    transition: transform 0.3s;
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    max-width: 800px;
 }
 
-.galerie img:hover {
-    transform: scale(1.05);
-}
+/* ---------- SECTIONS ---------- */
 
 section {
-    padding: 40px;
-    max-width: 900px;
+    padding: 100px 60px;
+    max-width: 1200px;
     margin: auto;
 }
 
+section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+}
+
+/* ---------- GALERIE ---------- */
+
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.carte-oeuvre {
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    transition: transform 0.4s;
+}
+
+.carte-oeuvre:hover {
+    transform: translateY(-10px);
+}
+
+.carte-oeuvre img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.carte-oeuvre h3 {
+    margin-top: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+}
+
+/* ---------- CONTACT ---------- */
+
+.contact-box {
+    background-color: white;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    max-width: 600px;
+}
+
+/* ---------- FOOTER ---------- */
+
 footer {
-    background-color: #dbe7df;
     text-align: center;
-    padding: 15px;
+    padding: 30px;
     font-size: 0.9em;
+    color: #6b7c73;
 }
