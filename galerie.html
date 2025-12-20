@@ -8,8 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-/* ================= BASE ================= */
-
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -17,8 +15,6 @@ body {
     color: #2e443a;
     overflow-x: hidden;
 }
-
-/* ================= HEADER ================= */
 
 header {
     padding: 30px;
@@ -30,7 +26,6 @@ header {
 header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.2em;
-    margin-bottom: 10px;
 }
 
 nav a {
@@ -39,35 +34,6 @@ nav a {
     color: #2e443a;
     font-size: 0.95em;
 }
-
-/* ================= DECOR VEGETAL ================= */
-
-.feuille {
-    position: absolute;
-    width: 220px;
-    opacity: 0.12;
-    animation: flotter 14s ease-in-out infinite;
-    pointer-events: none;
-}
-
-.feuille.gauche {
-    top: 200px;
-    left: -80px;
-}
-
-.feuille.droite {
-    bottom: 200px;
-    right: -80px;
-    animation-delay: 4s;
-}
-
-@keyframes flotter {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(25px); }
-    100% { transform: translateY(0); }
-}
-
-/* ================= GALERIE ================= */
 
 section {
     max-width: 1200px;
@@ -119,8 +85,6 @@ section {
     font-size: 1.25em;
 }
 
-/* ================= LIGHTBOX ================= */
-
 #lightbox {
     position: fixed;
     inset: 0;
@@ -144,22 +108,14 @@ section {
     font-family: 'Playfair Display', serif;
 }
 
-/* ================= MOBILE ================= */
+@keyframes flotter {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(25px); }
+    100% { transform: translateY(0); }
+}
 
 @media (max-width: 700px) {
-
-    .galerie {
-        padding: 30px;
-        border-radius: 30px;
-    }
-
-    .oeuvre img {
-        height: 300px;
-    }
-
-    .feuille {
-        width: 120px;
-    }
+    .oeuvre img { height: 300px; }
 }
 </style>
 </head>
@@ -177,63 +133,52 @@ section {
 </header>
 
 <!-- FEUILLES DECORATIVES -->
-<img class="feuille gauche" src="https://i.imgur.com/8QfZQyU.png">
-<img class="feuille droite" src="https://i.imgur.com/8QfZQyU.png">
+<img src="https://i.imgur.com/x7TJTRN.png" 
+     alt="Feuille coin supérieur gauche" 
+     style="position:absolute;top:0;left:0;width:220px;opacity:0.12;animation:flotter 16s ease-in-out infinite;pointer-events:none;">
+<img src="https://i.imgur.com/x7TJTRN.png" 
+     alt="Feuille coin inférieur droit" 
+     style="position:absolute;width:220px;opacity:0.12;bottom:0;right:0;transform:scale(-1,-1);animation:flotter 16s ease-in-out infinite;pointer-events:none;">
 
 <section>
     <div class="galerie">
-
         <div class="oeuvre" onclick="openLightbox(this)">
             <img src="https://i.imgur.com/QqvC9vT.jpeg" alt="Sans titre I – Encre de Chine">
             <h3>Sans titre I</h3>
         </div>
-
         <div class="oeuvre" onclick="openLightbox(this)">
             <img src="https://i.imgur.com/NlcW5U4.jpeg" alt="Nature intérieure – Fusain">
             <h3>Nature intérieure</h3>
         </div>
-
         <div class="oeuvre" onclick="openLightbox(this)">
             <img src="https://i.imgur.com/SSQACJR.jpeg" alt="Éclosion – Illustration">
             <h3>Éclosion</h3>
         </div>
-
     </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
     <img id="lightbox-img">
     <p id="lightbox-text"></p>
 </div>
 
 <script>
-/* LIGHTBOX */
 function openLightbox(el) {
     lightbox.style.display = "flex";
     lightboxImg.src = el.querySelector("img").src;
     lightboxText.innerText = el.querySelector("img").alt;
 }
-
-function closeLightbox() {
-    lightbox.style.display = "none";
-}
-
+function closeLightbox() { lightbox.style.display = "none"; }
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const lightboxText = document.getElementById("lightbox-text");
 
-/* SCROLL REVEAL */
 const oeuvres = document.querySelectorAll(".oeuvre");
-
 window.addEventListener("scroll", () => {
     oeuvres.forEach(o => {
-        if (o.getBoundingClientRect().top < window.innerHeight - 120) {
-            o.classList.add("visible");
-        }
+        if (o.getBoundingClientRect().top < window.innerHeight - 120) o.classList.add("visible");
     });
 });
-
 window.dispatchEvent(new Event("scroll"));
 </script>
 
