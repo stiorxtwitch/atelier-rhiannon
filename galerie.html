@@ -1,10 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Œuvres – Atelier Rhiannon</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<title>Atelier Rhiannon – Œuvres</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- POLICES -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ================= BASE ================= */
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f6f8f5;
+    color: #2e443a;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #2e443a;
+    font-size: 0.95em;
+}
+
+/* ================= GALERIE ================= */
+
+section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 30px;
+}
+
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.oeuvre {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.oeuvre.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.oeuvre img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.oeuvre h3 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+/* ================= LIGHTBOX ================= */
+
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(246,248,245,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+}
+
+#lightbox p {
+    margin-top: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+    header h1 {
+        font-size: 1.7em;
+    }
+
+    .oeuvre img {
+        height: 300px;
+    }
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -18,31 +132,58 @@
 </header>
 
 <section>
-    <h2>Œuvres</h2>
-
     <div class="galerie">
 
-        <div class="carte-oeuvre">
-            <img src="images/oeuvre-1.jpg" alt="Œuvre 1">
+        <div class="oeuvre" onclick="openLightbox(this)">
+            <img src="https://i.imgur.com/QqvC9vT.jpeg" alt="Sans titre I – Encre de Chine">
             <h3>Sans titre I</h3>
         </div>
 
-        <div class="carte-oeuvre">
-            <img src="images/oeuvre-2.jpg" alt="Œuvre 2">
-            <h3>Nature sensible</h3>
+        <div class="oeuvre" onclick="openLightbox(this)">
+            <img src="https://i.imgur.com/NlcW5U4.jpeg" alt="Fusain – Nature intérieure">
+            <h3>Nature intérieure</h3>
         </div>
 
-        <div class="carte-oeuvre">
-            <img src="images/oeuvre-3.jpg" alt="Œuvre 3">
+        <div class="oeuvre" onclick="openLightbox(this)">
+            <img src="https://i.imgur.com/SSQACJR.jpeg" alt="Illustration – Éclosion">
             <h3>Éclosion</h3>
         </div>
 
     </div>
 </section>
 
-<footer>
-    © 2025 Atelier Rhiannon
-</footer>
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+    <p id="lightbox-text"></p>
+</div>
+
+<script>
+/* ===== LIGHTBOX ===== */
+function openLightbox(el) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = el.querySelector("img").src;
+    document.getElementById("lightbox-text").innerText = el.querySelector("img").alt;
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+/* ===== SCROLL ANIMATION ===== */
+const oeuvres = document.querySelectorAll(".oeuvre");
+
+window.addEventListener("scroll", () => {
+    oeuvres.forEach(o => {
+        if (o.getBoundingClientRect().top < window.innerHeight - 100) {
+            o.classList.add("visible");
+        }
+    });
+});
+
+/* déclenche au chargement */
+window.dispatchEvent(new Event("scroll"));
+</script>
 
 </body>
 </html>
