@@ -8,16 +8,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
+/* ================= BASE ================= */
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #f6f8f5;
+    background: linear-gradient(180deg, #f6f8f5, #edf4ef);
     color: #2e443a;
+    overflow-x: hidden;
 }
+
+/* ================= HEADER ================= */
 
 header {
     padding: 40px;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 header h1 {
@@ -31,21 +38,82 @@ nav a {
     color: #2e443a;
 }
 
+/* ================= FEUILLES ================= */
+
+.feuille {
+    position: absolute;
+    width: 200px;
+    opacity: 0.12;
+    animation: flotter 14s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.feuille.gauche {
+    top: 180px;
+    left: -80px;
+}
+
+.feuille.droite {
+    bottom: 120px;
+    right: -80px;
+    animation-delay: 4s;
+}
+
+@keyframes flotter {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(25px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================= CONTENU ================= */
+
 section {
     max-width: 600px;
     margin: auto;
-    padding: 100px 30px;
+    padding: 120px 30px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
-section h2 {
+.carte-contact {
+    background: white;
+    padding: 70px 50px;
+    border-radius: 45px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.4s ease;
+}
+
+.carte-contact.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carte-contact h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2em;
     margin-bottom: 30px;
 }
 
-section p {
+.carte-contact p {
     font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .carte-contact {
+        padding: 50px 30px;
+        border-radius: 30px;
+    }
+
+    .feuille {
+        width: 120px;
+    }
 }
 </style>
 </head>
@@ -62,14 +130,28 @@ section p {
     </nav>
 </header>
 
+<!-- FEUILLES DECORATIVES -->
+<img class="feuille gauche" src="https://i.imgur.com/8QfZQyU.png" alt="">
+<img class="feuille droite" src="https://i.imgur.com/8QfZQyU.png" alt="">
+
 <section>
-    <h2>Contact</h2>
-    <p>
-        Pour toute question, collaboration ou échange :
-        <br><br>
-        <strong>atelier.rhiannon@email.com</strong>
-    </p>
+    <div class="carte-contact" id="contactCard">
+        <h2>Contact</h2>
+        <p>
+            Pour toute question, collaboration ou échange sensible,
+            n’hésitez pas à me contacter.
+            <br><br>
+            <strong>atelier.rhiannon@email.com</strong>
+        </p>
+    </div>
 </section>
+
+<script>
+/* Apparition douce */
+window.addEventListener("load", () => {
+    document.getElementById("contactCard").classList.add("visible");
+});
+</script>
 
 </body>
 </html>
